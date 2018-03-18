@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
@@ -12,6 +13,10 @@ app.get('/person', (req, res) => {
     name: 'Liam',
     hobbies: ['coding', 'cuddling'],
   });
+});
+
+app.get('/about', (req, res) => {
+  res.render('about.hbs')
 });
 
 app.get('/bad', (req, res) => {
