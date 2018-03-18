@@ -5,7 +5,11 @@ app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-  res.send('hello world');
+  res.render('home.hbs', {
+    pageTitle: 'Home',
+    greeting: 'Welcome to this site!',
+    currentYear: new Date().getFullYear()
+  });
 });
 
 app.get('/person', (req, res) => {
@@ -16,7 +20,10 @@ app.get('/person', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-  res.render('about.hbs')
+  res.render('about.hbs', {
+    nameOfPerson: 'Sting',
+    currentYear: new Date().getFullYear()
+  })
 });
 
 app.get('/bad', (req, res) => {
