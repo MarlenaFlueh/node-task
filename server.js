@@ -6,11 +6,14 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
+hbs.registerHelper('toUpper', (text) => text.toUpperCase());
+
+hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
+
 app.get('/', (req, res) => {
   res.render('home.hbs', {
     pageTitle: 'Home',
     greeting: 'Welcome to this site!',
-    currentYear: new Date().getFullYear()
   });
 });
 
@@ -24,7 +27,6 @@ app.get('/person', (req, res) => {
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
     nameOfPerson: 'Sting',
-    currentYear: new Date().getFullYear()
   })
 });
 
